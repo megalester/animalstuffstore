@@ -245,54 +245,15 @@
     </div>
   </div>
 
-  <!-- LiveChat Widget -->
-  <div id="chat-widget">
-    <button id="chat-button" onclick="toggleChatBox()">💬</button>
-    <div id="chat-box">
-      <textarea placeholder="Type your message..."></textarea>
-      <button>Send</button>
-    </div>
-  </div>
-
+  <!-- LiveChat (www.livechat.com) code -->
   <script>
-    function showSection(sectionId) {
-      document.querySelectorAll('section').forEach(section => {
-        section.classList.remove('active');
-      });
-      document.getElementById(sectionId).classList.add('active');
-    }
-
-    function openModal(type) {
-      document.getElementById('modal').style.display = 'block';
-      if (type === 'signup') {
-        document.getElementById('signup-form').style.display = 'block';
-        document.getElementById('login-form').style.display = 'none';
-      } else {
-        document.getElementById('signup-form').style.display = 'none';
-        document.getElementById('login-form').style.display = 'block';
-      }
-    }
-
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
-
-    function switchForms() {
-      const loginForm = document.getElementById('login-form');
-      const signupForm = document.getElementById('signup-form');
-      if (loginForm.style.display === 'none') {
-        loginForm.style.display = 'block';
-        signupForm.style.display = 'none';
-      } else {
-        loginForm.style.display = 'none';
-        signupForm.style.display = 'block';
-      }
-    }
-
-    function toggleChatBox() {
-      const chatBox = document.getElementById('chat-box');
-      chatBox.style.display = (chatBox.style.display === 'none' || chatBox.style.display === '') ? 'block' : 'none';
-    }
+      window.__lc = window.__lc || {};
+      window.__lc.license = 16972020;
+      window.__lc.integration_name = "manual_channels";
+      window.__lc.product_name = "livechat";
+      ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
   </script>
+  <noscript><a href="https://www.livechat.com/chat-with/16972020/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+
 </body>
 </html>
