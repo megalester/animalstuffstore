@@ -59,7 +59,7 @@
 </head>
 <body>
   <header>
-    <img src="https://i.imgur.com/DELrfAt.png" width="150" alt="Logo">
+    <img id="header-logo" src="https://i.imgur.com/DELrfAt.png" width="150" alt="Logo">
     <h1>Animal Stuff Store</h1>
     <p>Your trusted source for pet supplies</p>
     <nav>
@@ -76,7 +76,7 @@
     <section id="home" class="active">
       <h2>Welcome to Animal Stuff Store</h2>
       <p>We are an online pet supply store dedicated to providing quality products for pets of all kinds. From nutritious food and comfy bedding to fun toys and grooming essentials, Animal Stuff Store is your one-stop shop.</p>
-      <img id="rotatingImage" src="https://i.imgur.com/ek9CEHH.png" alt="Cute Dog" class="pet-image">
+      <img id="home-image" src="https://i.imgur.com/ek9CEHH.png" alt="Cute Dog" class="pet-image">
     </section>
 
     <section id="about">
@@ -144,17 +144,6 @@
     <p>&copy; 2025 Animal Stuff Store. All rights reserved.</p>
   </footer>
 
-  <!-- Start of LiveChat (www.livechat.com) code -->
-  <script>
-    window.__lc = window.__lc || {};
-    window.__lc.license = 16972020;
-    window.__lc.integration_name = "manual_channels";
-    window.__lc.product_name = "livechat";
-    (function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
-  </script>
-  <noscript><a href="https://www.livechat.com/chat-with/16972020/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
-  <!-- End of LiveChat code -->
-
   <script>
     let activeSection = 'home';
 
@@ -163,6 +152,17 @@
         section.classList.remove('active');
       });
       document.getElementById(id).classList.add('active');
+
+      // Rotate the home image on section change
+      if (id === 'home') {
+        const homeImage = document.getElementById('home-image');
+        const images = [
+          "https://i.imgur.com/ek9CEHH.png", // Dog Image
+          "https://i.imgur.com/lH5fwNx.png"  // Cat Image (Example)
+        ];
+        // Randomly change the image every time the home section is activated
+        homeImage.src = images[Math.floor(Math.random() * images.length)];
+      }
     }
 
     document.getElementById('contact-form').addEventListener('submit', function(e) {
@@ -170,22 +170,6 @@
       document.querySelector('.thank-you-message').style.display = 'block';
       this.reset();
     });
-
-    // Rotating images
-    const images = [
-      "https://i.imgur.com/ek9CEHH.png", 
-      "https://i.imgur.com/KqEqj1r.png", 
-      "https://i.imgur.com/0VfgckI.png"
-    ];
-    let currentImageIndex = 0;
-
-    function rotateImages() {
-      const imageElement = document.getElementById('rotatingImage');
-      currentImageIndex = (currentImageIndex + 1) % images.length;
-      imageElement.src = images[currentImageIndex];
-    }
-
-    setInterval(rotateImages, 3000); // Change image every 3 seconds
   </script>
 </body>
 </html>
