@@ -117,11 +117,11 @@
 
     <section id="reviews">
       <h2>Customer Reviews</h2>
-      <p>"My wife, little girl, and I went in today for dog food for my 3 dogs, and the service we received was amazing. We are looking forward to our next visit, and it's nice to support our local stores in San Bernardino." <br> - Kenny O.</p>
-      <p>"I have been going there for years, and the staff is helpful, friendly, and I never have to load all the 50 lb bags in my car. The prices are good. The owner is the nicest guy. Also, they will inform you on any pet or livestock subject if you have any questions. Great Place!" <br> - Cynthia Y.</p>
-      <p>"Knowledgeable staff, reasonable prices, fresh products—my go-to place for pet supplies." <br> - Ibenhana</p>
+      <p>"My wife, little girl, and I went in today for dog food for my 3 dogs, and the service we received was amazing..." <br> - Kenny O.</p>
+      <p>"I have been going there for years, and the staff is helpful, friendly..." <br> - Cynthia Y.</p>
+      <p>"Knowledgeable staff, reasonable prices, fresh products..." <br> - Ibenhana</p>
       <p>"Love this place. You can find really good food for dogs that Petsmart/Petco do not sell." <br> - Oner M.</p>
-      <p>"I came here BECAUSE of the reviews, and I'm so happy I did! These are the most friendly, informative people I've ever encountered at a pet/feed store. So helpful with assisting me with my chicken care. They also saved me money by recommending a larger bag of the product I was buying. AND they were soooo nice to my child! Family-friendly and super knowledgeable!" <br> - Michelle A.</p>
+      <p>"I came here BECAUSE of the reviews, and I'm so happy I did!" <br> - Michelle A.</p>
       <p>"Great prices, quality product!" <br> - Dustin S.</p>
     </section>
 
@@ -168,11 +168,13 @@
     function showSection(id) {
       document.querySelectorAll("main section").forEach(sec => sec.classList.remove("active"));
       document.getElementById(id).classList.add("active");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      this.style.display = "none";
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      // Normally here you would handle backend form submission via fetch or AJAX
+      this.reset();
       document.getElementById("thankYou").style.display = "block";
     });
   </script>
