@@ -202,104 +202,92 @@
 
     <section id="contact">
       <h2>Contact Us</h2>
-      <h3>Location</h3>
-      <p>123 Main Street, Baltimore, MD 21202</p>
-      <h3>Contact Form</h3>
-      <form id="contact-form">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" required>
-        <label for="email">Your Email</label>
-        <input type="email" id="email" name="email" required>
-        <label for="message">Your Message</label>
-        <textarea id="message" name="message" required></textarea>
-        <button type="submit">Submit</button>
+      <p>Contact Information:</p>
+      <p>Email: support@animalstuffstore.com</p>
+      <p>Phone: (123) 456-7890</p>
+      <p>Business Hours: Monday to Friday: 9 AM - 5 PM, Saturday: 10 AM - 4 PM</p>
+      <form action="#" method="post">
+        <label for="message">Your Message:</label>
+        <textarea name="message" id="message" placeholder="Enter your message here"></textarea>
+        <button type="submit">Send Message</button>
       </form>
-      <div class="thank-you-message" id="thank-you-message">
-        Thank you for reaching out! We'll get back to you soon.
-      </div>
+      <p class="thank-you-message">Thank you for reaching out! We’ll get back to you shortly.</p>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Animal Stuff Store. All Rights Reserved.</p>
+    <p>&copy; 2025 Animal Stuff Store - All rights reserved.</p>
   </footer>
 
-  <!-- LiveChat Integration -->
-  <script>
-    window.__lc = window.__lc || {};
-    window.__lc.license = 16972020;
-    window.__lc.integration_name = "manual_channels";
-    window.__lc.product_name = "livechat";
-    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
-  </script>
-  <noscript><a href="https://www.livechat.com/chat-with/16972020/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
-
-  <!-- Modal for login/signup -->
-  <div id="loginModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('login')">&times;</span>
-      <h3>Login</h3>
-      <form>
-        <label for="login-email">Email:</label>
-        <input type="email" id="login-email" name="login-email" required>
-        <label for="login-password">Password:</label>
-        <input type="password" id="login-password" name="login-password" required>
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  </div>
-
-  <div id="signupModal" class="modal">
+  <!-- Modal for Sign Up and Login -->
+  <div id="signup-modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal('signup')">&times;</span>
-      <h3>Sign Up</h3>
-      <form>
-        <label for="signup-email">Email:</label>
-        <input type="email" id="signup-email" name="signup-email" required>
-        <label for="signup-password">Password:</label>
-        <input type="password" id="signup-password" name="signup-password" required>
+      <h2>Sign Up</h2>
+      <form id="signup-form">
+        <input type="text" id="name" name="name" placeholder="Full Name" required /><br>
+        <input type="email" id="email" name="email" placeholder="Email Address" required /><br>
+        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required /><br>
+        <input type="password" id="password" name="password" placeholder="Password" required /><br>
         <button type="submit">Sign Up</button>
       </form>
     </div>
   </div>
 
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('login')">&times;</span>
+      <h2>Login</h2>
+      <form id="login-form">
+        <input type="email" id="login-email" name="email" placeholder="Email Address" required /><br>
+        <input type="password" id="login-password" name="password" placeholder="Password" required /><br>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
   <script>
-    // Function to open modals for login or signup
-    function openModal(type) {
-      document.getElementById(type + 'Modal').style.display = 'block';
-    }
-
-    // Function to close modals
-    function closeModal(type) {
-      document.getElementById(type + 'Modal').style.display = 'none';
-    }
-
-    // Function for switching between sections
     function showSection(id) {
-      const sections = document.querySelectorAll('section');
-      sections.forEach((section) => {
+      document.querySelectorAll('section').forEach(function(section) {
         section.classList.remove('active');
       });
       document.getElementById(id).classList.add('active');
     }
+
+    function openModal(type) {
+      document.getElementById(type + '-modal').style.display = 'block';
+    }
+
+    function closeModal(type) {
+      document.getElementById(type + '-modal').style.display = 'none';
+    }
+
+    document.getElementById('signup-form').onsubmit = function(event) {
+      event.preventDefault();
+      alert('Thank you for signing up!');
+      closeModal('signup');
+    };
+
+    document.getElementById('login-form').onsubmit = function(event) {
+      event.preventDefault();
+      alert('Logged in successfully!');
+      closeModal('login');
+    };
   </script>
 
-  <script>
-    // LiveChat toggle
-    function toggleChatBox() {
-      const chatBox = document.getElementById('chat-box');
-      chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
-    }
+  <!-- Live Chat Widget -->
+  <div id="chat-widget">
+    <button id="chat-button">💬</button>
+    <div id="chat-box">
+      <textarea placeholder="Type your message here..."></textarea>
+      <button>Send</button>
+    </div>
+  </div>
 
-    function sendChatMessage() {
-      const chatInput = document.getElementById('chat-input').value;
-      if (chatInput.trim() !== '') {
-        alert(`Message sent: ${chatInput}`);
-        document.getElementById('chat-input').value = ''; // Clear input
-      } else {
-        alert('Please type a message before sending.');
-      }
-    }
+  <script>
+    document.getElementById('chat-button').onclick = function() {
+      document.getElementById('chat-box').style.display = 'block';
+    };
   </script>
 </body>
 </html>
