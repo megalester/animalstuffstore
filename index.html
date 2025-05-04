@@ -55,33 +55,26 @@
       color: #2e7d32;
       font-weight: bold;
     }
-
-    /* Free Delivery Section Styles */
-    .free-delivery-container {
-      position: absolute;
-      top: 20px;
-      right: 10px;
-      background: #fff;
-      border: 1px solid #ddd;
+    /* New Section Styles */
+    .delivery-info {
+      margin-top: 20px;
+      background: #f4f4f4;
+      padding: 20px;
       border-radius: 8px;
-      padding: 10px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      cursor: pointer;
+      font-weight: bold;
+      color: #4caf30;
     }
-
-    .free-delivery-info {
+    .delivery-info-details {
       display: none;
       margin-top: 10px;
-      font-size: 12px;
-      color: #4caf30;
-      border-top: 1px solid #ddd;
-      padding-top: 10px;
-    }
-
-    .free-delivery-container h3 {
-      margin: 0;
-      cursor: pointer;
+      text-align: left;
       font-size: 14px;
-      color: #4caf30;
+      background: #fff;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
     }
   </style>
 </head>
@@ -100,25 +93,21 @@
     </nav>
   </header>
 
-  <!-- Free Delivery Section (Right Side) -->
-  <div class="free-delivery-container">
-    <h3 onclick="toggleDeliveryInfo()">Free delivery on first-time orders over $35</h3>
-    <div class="free-delivery-info">
-      <p><strong>Free 1-3 day delivery over $35</strong></p>
-      <p>Fast, Free, Delivery!<br>On first-time orders over $35</p>
-      <p><strong>SUBTOTAL SHIPPING</strong><br>
-        Over $35: Free!<br>
-        Under $35: $4.95 Flat Rate</p>
-      <p>Automatically applied at checkout.</p>
-      <p>Please note: We cannot ship to P.O. boxes or international addresses. Only valid within the continuous U.S.</p>
-    </div>
-  </div>
-
   <main>
     <section id="home" class="active">
       <h2>Welcome to Animal Stuff Store</h2>
       <p>We are an online pet supply store dedicated to providing quality products for pets of all kinds. From nutritious food and comfy bedding to fun toys and grooming essentials, Animal Stuff Store is your one-stop shop.</p>
       <img id="rotatingImage" src="https://i.imgur.com/ek9CEHH.png" alt="Cute Dog" class="pet-image">
+      
+      <!-- Delivery Info Section -->
+      <div class="delivery-info" onclick="toggleDeliveryInfo()">Free delivery on first-time orders over $35</div>
+      <div id="deliveryDetails" class="delivery-info-details">
+        <p>Free 1-3 day delivery over $35</p>
+        <p>Fast, Free, Delivery!<br>on first-time orders over $35</p>
+        <p><strong>SUBTOTAL:</strong> Over $35 <strong>SHIPPING:</strong> Free!<br><strong>Under $35:</strong> $4.95 Flat Rate</p>
+        <p>Automatically applied at checkout.</p>
+        <p>Please note: We cannot ship to P.O. boxes or international addresses. Only valid within the continuous U.S.</p>
+      </div>
     </section>
 
     <section id="about">
@@ -130,7 +119,7 @@
       <p>Plus, we have a 100% Satisfaction Guaranteed Policy on every order. So, if your picky feline isn’t loving their new bed, you can return it or replace it. Making your pet happy has never been easier.</p>
     </section>
 
-    <section id="dogfood">
+    <!-- Other sections remain the same -->   <section id="dogfood">
       <h2>Dog Food</h2>
       <p>Explore our selection of healthy, vet-recommended food for dogs of all breeds and ages.</p>
       <img src="https://i.imgur.com/QwD06Gc.png" alt="Dog Food Logo" class="pet-image">
@@ -185,22 +174,34 @@
   <footer>
     <p>&copy; 2025 Animal Stuff Store. All rights reserved.</p>
   </footer>
-
+  
   <!-- Start of LiveChat (www.livechat.com) code -->
   <script>
     window.__lc = window.__lc || {};
     window.__lc.license = 16972020;
-    window.__lc.chat_between_groups = false;
-    window.__lc.chat_bubble = true;
-    window.__lc.chat_bubble_color = '#4CAF50';
-    window.__lc.chat_bubble_icon = 'https://i.imgur.com/ek9CEHH.png';
-    window.__lc.page_views = 10;
-    window.__lc.enabled = true;
+    window.__lc.integration_name = "manual_channels";
+    window.__lc.product_name = "livechat";
+    (function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
   </script>
-  <script async type="text/javascript" src="https://cdn.livechatinc.com/tracking.js"></script>
-
-  <!-- Rotating images -->
+  <noscript><a href="https://www.livechat.com/chat-with/16972020/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+  <!-- End of LiveChat code -->
   <script>
+    let activeSection = 'home';
+
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.querySelector('.thank-you-message').style.display = 'block';
+      this.reset();
+    });
+
+    // Rotating images
     const images = [
       "https://i.imgur.com/ek9CEHH.png",
       "https://i.imgur.com/1K5nfpW.png",
@@ -212,11 +213,17 @@
       "https://i.imgur.com/Jv0bzMC.png",
     ];
     let currentImageIndex = 0;
-
+    
     setInterval(() => {
       currentImageIndex = (currentImageIndex + 1) % images.length;
       document.getElementById('rotatingImage').src = images[currentImageIndex];
     }, 3000);
+
+    // Toggle delivery information visibility
+    function toggleDeliveryInfo() {
+      const deliveryDetails = document.getElementById('deliveryDetails');
+      deliveryDetails.style.display = (deliveryDetails.style.display === 'block') ? 'none' : 'block';
+    }
   </script>
 </body>
 </html>
