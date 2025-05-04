@@ -70,65 +70,6 @@
       color: #2e7d32;
       font-weight: bold;
     }
-
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-    }
-    .modal-content {
-      background: #fff;
-      margin: 10% auto;
-      padding: 20px;
-      border-radius: 6px;
-      max-width: 400px;
-      position: relative;
-    }
-    .close {
-      position: absolute;
-      top: 10px; right: 15px;
-      font-size: 20px;
-      cursor: pointer;
-      color: #999;
-    }
-
-    /* Live Chat Widget */
-    #chat-widget {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
-    }
-    #chat-button {
-      background: #4caf50;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 28px;
-      cursor: pointer;
-    }
-    #chat-box {
-      display: none;
-      position: absolute;
-      bottom: 70px;
-      right: 0;
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      width: 300px;
-      padding: 10px;
-    }
-    #chat-box textarea {
-      width: 100%;
-      height: 60px;
-      resize: none;
-    }
   </style>
 </head>
 <body>
@@ -204,90 +145,70 @@
       <h2>Contact Us</h2>
       <p>Contact Information:</p>
       <p>Email: support@animalstuffstore.com</p>
-      <p>Phone: (123) 456-7890</p>
-      <p>Business Hours: Monday to Friday: 9 AM - 5 PM, Saturday: 10 AM - 4 PM</p>
-      <form action="#" method="post">
-        <label for="message">Your Message:</label>
-        <textarea name="message" id="message" placeholder="Enter your message here"></textarea>
+      <p>Phone: 1-800-555-1234</p>
+      <p>Location: 123 Pet Street, Animal Town, USA</p>
+
+      <h3>Send Us A Message</h3>
+      <form id="contact-form">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
       </form>
-      <p class="thank-you-message">Thank you for reaching out! We’ll get back to you shortly.</p>
+      <div class="thank-you-message">Thank you for contacting us! We'll get back to you soon.</div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Animal Stuff Store - All rights reserved.</p>
+    <p>&copy; 2025 Animal Stuff Store. All rights reserved.</p>
   </footer>
 
-  <!-- Modal for Sign Up and Login -->
-  <div id="signup-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('signup')">&times;</span>
-      <h2>Sign Up</h2>
-      <form id="signup-form">
-        <input type="text" id="name" name="name" placeholder="Full Name" required /><br>
-        <input type="email" id="email" name="email" placeholder="Email Address" required /><br>
-        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required /><br>
-        <input type="password" id="password" name="password" placeholder="Password" required /><br>
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
-  </div>
-
-  <div id="login-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('login')">&times;</span>
-      <h2>Login</h2>
-      <form id="login-form">
-        <input type="email" id="login-email" name="email" placeholder="Email Address" required /><br>
-        <input type="password" id="login-password" name="password" placeholder="Password" required /><br>
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  </div>
+  <!-- Start of LiveChat (www.livechat.com) code -->
+  <script>
+    window.__lc = window.__lc || {};
+    window.__lc.license = 16972020;
+    window.__lc.integration_name = "manual_channels";
+    window.__lc.product_name = "livechat";
+    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+  </script>
+  <noscript><a href="https://www.livechat.com/chat-with/16972020/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+  <!-- End of LiveChat code -->
 
   <script>
+    let activeSection = 'home';
+
     function showSection(id) {
-      document.querySelectorAll('section').forEach(function(section) {
+      document.querySelectorAll('section').forEach(section => {
         section.classList.remove('active');
       });
       document.getElementById(id).classList.add('active');
+      activeSection = id;
     }
 
     function openModal(type) {
-      document.getElementById(type + '-modal').style.display = 'block';
+      alert(type);
     }
 
-    function closeModal(type) {
-      document.getElementById(type + '-modal').style.display = 'none';
+    // Live Chat Functionality
+    function toggleChatBox() {
+      const chatBox = document.getElementById('chat-box');
+      chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
     }
 
-    document.getElementById('signup-form').onsubmit = function(event) {
+    function sendMessage() {
+      const input = document.getElementById('chat-input');
+      if (input.value.trim()) {
+        alert('Message sent: ' + input.value);
+        input.value = '';
+        toggleChatBox();
+      }
+    }
+
+    // Contact Form Submission
+    document.getElementById('contact-form').addEventListener('submit', function (event) {
       event.preventDefault();
-      alert('Thank you for signing up!');
-      closeModal('signup');
-    };
-
-    document.getElementById('login-form').onsubmit = function(event) {
-      event.preventDefault();
-      alert('Logged in successfully!');
-      closeModal('login');
-    };
-  </script>
-
-  <!-- Live Chat Widget -->
-  <div id="chat-widget">
-    <button id="chat-button">💬</button>
-    <div id="chat-box">
-      <textarea placeholder="Type your message here..."></textarea>
-      <button>Send</button>
-    </div>
-  </div>
-
-  <script>
-    document.getElementById('chat-button').onclick = function() {
-      document.getElementById('chat-box').style.display = 'block';
-    };
+      document.querySelector('.thank-you-message').style.display = 'block';
+    });
   </script>
 </body>
 </html>
