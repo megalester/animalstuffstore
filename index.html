@@ -197,103 +197,71 @@
     <section id="reviews">
       <h2>Customer Reviews</h2>
       <p>"My wife, little girl, and I went in today for dog food for my 3 dogs, and the service we received was amazing. We are looking forward to our next visit, and it's nice to support our local stores in San Bernardino." <br> - Kenny O.</p>
-      <p>"I have been going there for years, and the staff is helpful, friendly, and I never have to load all the 50 lb bags in my car. The prices are good. The owner is the nicest guy. Also, they make you feel like you are at home. No pressure, just a good place to shop." <br> - Adam W.</p>
-      <p>"My new go-to place! Great products, great service. I recommend this store to anyone looking for pet food or supplies." <br> - Emily T.</p>
+      <p>"I have been going there for years, and the staff is helpful, friendly, and I never have to load all the 50 lb bags in my car. The prices are good. The owner is the nicest guy. Also, they make you feel like you are at home. I really appreciate this store and all of their help." <br> - Chad M.</p>
     </section>
 
     <section id="contact">
       <h2>Contact Us</h2>
-      <p>For questions or concerns, feel free to reach out to us!</p>
-      <p>Email us at: info@animalstuffstore.com</p>
-      <p>Visit us at: 1234 Pet Street, Pet City, ABC 12345</p>
-      <p>Phone: (123) 456-7890</p>
+      <h3>Location</h3>
+      <p>123 Main Street, Baltimore, MD 21202</p>
+      <h3>Contact Form</h3>
+      <form id="contact-form">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+      <div class="thank-you-message" id="thank-you-message">
+        Thank you for reaching out! We'll get back to you soon.
+      </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Animal Stuff Store. All Rights Reserved.</p>
+    <p>© 2025 Animal Stuff Store. All Rights Reserved.</p>
   </footer>
 
-  <!-- Modal for Login/Signup -->
-  <div class="modal" id="authModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <div id="modalContent">
-        <h2 id="modalTitle">Login</h2>
-        <form id="loginForm">
-          <input type="text" placeholder="Email" required>
-          <input type="password" placeholder="Password" required>
-          <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a href="#" onclick="toggleAuthForm()">Sign Up</a></p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Live Chat Widget -->
+  <!-- LiveChat Integration -->
   <div id="chat-widget">
     <button id="chat-button" onclick="toggleChatBox()">💬</button>
     <div id="chat-box">
-      <textarea placeholder="Ask us anything..."></textarea>
-      <button>Send</button>
+      <textarea placeholder="Type your message..." id="chat-input"></textarea>
+      <button onclick="sendChatMessage()">Send</button>
     </div>
   </div>
 
   <script>
-    let currentSection = 'home';
-    
-    function showSection(section) {
-      document.getElementById(currentSection).classList.remove('active');
-      currentSection = section;
-      document.getElementById(currentSection).classList.add('active');
+    // JavaScript for Section Display
+    function showSection(id) {
+      const sections = document.querySelectorAll('section');
+      sections.forEach((section) => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
     }
-    
+
+    // Modal for login/signup
     function openModal(type) {
-      document.getElementById('authModal').style.display = 'block';
-      document.getElementById('modalContent').innerHTML = `
-        <h2>${type === 'login' ? 'Login' : 'Sign Up'}</h2>
-        <form id="${type}Form">
-          <input type="text" placeholder="Email" required>
-          <input type="password" placeholder="Password" required>
-          <button type="submit">${type === 'login' ? 'Login' : 'Sign Up'}</button>
-        </form>
-        <p>${type === 'login' ? 'Don\'t have an account?' : 'Already have an account?'} 
-          <a href="#" onclick="toggleAuthForm()">${type === 'login' ? 'Sign Up' : 'Login'}</a></p>
-      `;
-      document.getElementById('modalTitle').innerText = type === 'login' ? 'Login' : 'Sign Up';
+      alert(`${type.charAt(0).toUpperCase() + type.slice(1)} modal opened!`);
     }
-    
-    function closeModal() {
-      document.getElementById('authModal').style.display = 'none';
-    }
-    
-    function toggleAuthForm() {
-      const modalTitle = document.getElementById('modalTitle');
-      const form = document.getElementById('modalContent').querySelector('form');
-      const isLogin = modalTitle.innerText === 'Login';
-      
-      if (isLogin) {
-        modalTitle.innerText = 'Sign Up';
-        form.innerHTML = `
-          <input type="text" placeholder="Email" required>
-          <input type="password" placeholder="Password" required>
-          <button type="submit">Sign Up</button>
-        `;
-      } else {
-        modalTitle.innerText = 'Login';
-        form.innerHTML = `
-          <input type="text" placeholder="Email" required>
-          <input type="password" placeholder="Password" required>
-          <button type="submit">Login</button>
-        `;
-      }
-    }
-    
-    // Live Chat Toggle
+
+    // LiveChat functionality
     function toggleChatBox() {
       const chatBox = document.getElementById('chat-box');
       chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function sendChatMessage() {
+      const chatInput = document.getElementById('chat-input').value;
+      if (chatInput.trim() !== '') {
+        alert(`Message sent: ${chatInput}`);
+        document.getElementById('chat-input').value = ''; // Clear input
+      } else {
+        alert('Please type a message before sending.');
+      }
     }
   </script>
 </body>
