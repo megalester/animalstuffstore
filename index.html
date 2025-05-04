@@ -164,82 +164,59 @@
   </footer>
 
   <!-- Modal Structure -->
-<div id="auth-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
-  <div style="background:white; padding:20px; border-radius:8px; width:90%; max-width:400px; position:relative;">
-    <span onclick="closeModal()" style="position:absolute; top:10px; right:15px; font-size:20px; cursor:pointer;">&times;</span>
-    <h2 id="modal-title">Login</h2>
-    <form id="auth-form">
-      <input type="text" id="username" placeholder="Username" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button type="submit">Submit</button>
-    </form>
+  <div id="auth-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+    <div style="background:white; padding:20px; border-radius:8px; width:90%; max-width:400px; position:relative;">
+      <span onclick="closeModal()" style="position:absolute; top:10px; right:15px; font-size:20px; cursor:pointer;">&times;</span>
+      <h2 id="modal-title">Login</h2>
+      <form id="auth-form">
+        <input type="text" id="username" placeholder="Username" required style="display:block; margin:10px 0; width:100%;">
+        <input type="password" id="password" placeholder="Password" required style="display:block; margin:10px 0; width:100%;">
+        <button type="submit" style="margin-top:10px;">Submit</button>
+      </form>
+    </div>
   </div>
-</div>
 
-<script>
-  function openModal(type) {
-    const modal = document.getElementById('auth-modal');
-    modal.style.display = 'flex';
-    document.getElementById('modal-title').textContent = type === 'login' ? 'Login' : 'Sign Up';
-  }
-
-  function closeModal() {
-    document.getElementById('auth-modal').style.display = 'none';
-  }
-
-  document.getElementById('auth-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Form submitted!');
-    closeModal();
-  });
-</script>
-
-  <!-- Start of LiveChat (www.livechat.com) code -->
+  <!-- JavaScript -->
   <script>
-   window.__lc = window.__lc || {};
-    window.__lc.license = 16972020;
-    window.__lc.integration_name = "manual_channels";
-    window.__lc.product_name = "livechat";
-    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
-  </script>
-  <noscript><a href="https://www.livechat.com/chat-with/16972020/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
-  <!-- End of LiveChat code -->
-
-  <script>
-    let activeSection = 'home';
-
-    function showSection(id) {
-      document.querySelectorAll('section').forEach(section => {
-        section.classList.remove('active');
-      });
-      document.getElementById(id).classList.add('active');
-      activeSection = id;
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('main section');
+      sections.forEach(sec => sec.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
     }
 
     function openModal(type) {
-      alert(type);
+      const modal = document.getElementById('auth-modal');
+      const title = document.getElementById('modal-title');
+      title.textContent = type === 'signup' ? 'Sign Up' : 'Login';
+      modal.style.display = 'flex';
     }
 
-    // Live Chat Functionality
-    function toggleChatBox() {
-      const chatBox = document.getElementById('chat-box');
-      chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
+    function closeModal() {
+      document.getElementById('auth-modal').style.display = 'none';
     }
 
-    function sendMessage() {
-      const input = document.getElementById('chat-input');
-      if (input.value.trim()) {
-        alert('Message sent: ' + input.value);
-        input.value = '';
-        toggleChatBox();
-      }
-    }
-
-    // Contact Form Submission
-    document.getElementById('contact-form').addEventListener('submit', function (event) {
-      event.preventDefault();
-      document.querySelector('.thank-you-message').style.display = 'block';
+    // Optional: handle form submission
+    document.getElementById('auth-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Handle login or signup logic here
+      alert('Form submitted!');
+      closeModal();
     });
   </script>
+
+  <!-- Start of LiveChat (www.livechat.com) code -->
+  <script>
+    window.__lc = window.__lc || {};
+    window.__lc.license = 16972020;
+    window.__lc.integration_name = "manual_channels";
+    window.__lc.product_name = "livechat";
+    (function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}
+    var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},
+    off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},
+    call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,
+    n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};
+    !n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e})(window,document,[].slice)
+  </script>
+
 </body>
 </html>
