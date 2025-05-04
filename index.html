@@ -196,8 +196,8 @@
 
     <section id="reviews">
       <h2>Customer Reviews</h2>
-      <p>"My wife, little girl, and I went in today for dog food for my 3 dogs, and the service we received was amazing. We are looking forward to our next visit, and it's nice to support our local stores in San Bernardino." <br> - Kenny O.</p>
-      <p>"I have been going there for years, and the staff is helpful, friendly, and I never have to load all the 50 lb bags in my car. The prices are good. The owner is the nicest guy. Also, they make you feel like you are at home. I really appreciate this store and all of their help." <br> - Chad M.</p>
+      <p>"My wife, little girl, and I went in today for dog food for my 3 dogs, and the service we received was amazing. We are looking forward to a new long-term relationship with this pet store!" <br> - Matt K.</p>
+      <p>"This is a great store with lots of knowledge and helpful staff. I really appreciate this store and all of their help." <br> - Chad M.</p>
     </section>
 
     <section id="contact">
@@ -225,16 +225,56 @@
   </footer>
 
   <!-- LiveChat Integration -->
-  <div id="chat-widget">
-    <button id="chat-button" onclick="toggleChatBox()">💬</button>
-    <div id="chat-box">
-      <textarea placeholder="Type your message..." id="chat-input"></textarea>
-      <button onclick="sendChatMessage()">Send</button>
+  <script>
+    window.__lc = window.__lc || {};
+    window.__lc.license = 16972020;
+    window.__lc.integration_name = "manual_channels";
+    window.__lc.product_name = "livechat";
+    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+  </script>
+  <noscript><a href="https://www.livechat.com/chat-with/16972020/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+
+  <!-- Modal for login/signup -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('login')">&times;</span>
+      <h3>Login</h3>
+      <form>
+        <label for="login-email">Email:</label>
+        <input type="email" id="login-email" name="login-email" required>
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" name="login-password" required>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('signup')">&times;</span>
+      <h3>Sign Up</h3>
+      <form>
+        <label for="signup-email">Email:</label>
+        <input type="email" id="signup-email" name="signup-email" required>
+        <label for="signup-password">Password:</label>
+        <input type="password" id="signup-password" name="signup-password" required>
+        <button type="submit">Sign Up</button>
+      </form>
     </div>
   </div>
 
   <script>
-    // JavaScript for Section Display
+    // Function to open modals for login or signup
+    function openModal(type) {
+      document.getElementById(type + 'Modal').style.display = 'block';
+    }
+
+    // Function to close modals
+    function closeModal(type) {
+      document.getElementById(type + 'Modal').style.display = 'none';
+    }
+
+    // Function for switching between sections
     function showSection(id) {
       const sections = document.querySelectorAll('section');
       sections.forEach((section) => {
@@ -242,13 +282,10 @@
       });
       document.getElementById(id).classList.add('active');
     }
+  </script>
 
-    // Modal for login/signup
-    function openModal(type) {
-      alert(`${type.charAt(0).toUpperCase() + type.slice(1)} modal opened!`);
-    }
-
-    // LiveChat functionality
+  <script>
+    // LiveChat toggle
     function toggleChatBox() {
       const chatBox = document.getElementById('chat-box');
       chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
