@@ -12,6 +12,7 @@
       color: white;
       padding: 6px 10px;
       text-align: center;
+      position: relative;
     }
     header img { display: block; margin: 0 auto; }
     nav { margin-top: 10px; }
@@ -21,6 +22,21 @@
       margin: 0 15px;
       font-weight: bold;
       cursor: pointer;
+    }
+    .auth-links {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+    }
+    .auth-links button {
+      background: white;
+      color: #4caf30;
+      border: none;
+      padding: 6px 12px;
+      margin-left: 10px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: bold;
     }
     main { padding: 20px; max-width: 800px; margin: auto; }
     h1, h2 { color: #4caf50; margin: 8px 0; }
@@ -54,6 +70,65 @@
       color: #2e7d32;
       font-weight: bold;
     }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 6px;
+      max-width: 400px;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      color: #999;
+    }
+
+    /* Live Chat Widget */
+    #chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+    #chat-button {
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    #chat-box {
+      display: none;
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 300px;
+      padding: 10px;
+    }
+    #chat-box textarea {
+      width: 100%;
+      height: 60px;
+      resize: none;
+    }
   </style>
 </head>
 <body>
@@ -69,6 +144,10 @@
       <a onclick="showSection('reviews')">Reviews</a>
       <a onclick="showSection('contact')">Contact & Location</a>
     </nav>
+    <div class="auth-links">
+      <button onclick="openModal('login')">Login</button>
+      <button onclick="openModal('signup')">Sign Up</button>
+    </div>
   </header>
 
   <main>
@@ -164,17 +243,67 @@
     Sun: 09:00 AM - 04:30 PM
   </footer>
 
+  <!-- Login/Signup Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-login" style="display:none;">
+        <h2>Login</h2>
+        <input type="email" placeholder="Email" required><br>
+        <input type="password" placeholder="Password" required><br>
+        <button>Login</button>
+      </div>
+      <div id="modal-signup" style="display:none;">
+        <h2>Sign Up</h2>
+        <input type="text" placeholder="Full Name" required><br>
+        <input type="email" placeholder="Email" required><br>
+        <input type="password" placeholder="Password" required><br>
+        <button>Sign Up</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Live Chat Widget -->
+  <div id="chat-widget">
+    <button id="chat-button" onclick="toggleChat()">💬</button>
+    <div id="chat-box">
+      <p><strong>Chat with us!</strong></p>
+      <textarea placeholder="Type your message..."></textarea>
+      <button onclick="alert('Thank you! We will reply soon.')">Send</button>
+    </div>
+  </div>
+
   <script>
     function showSection(id) {
       document.querySelectorAll("main section").forEach(sec => sec.classList.remove("active"));
       document.getElementById(id).classList.add("active");
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    function openModal(type) {
+      document.getElementById("modal").style.display = "block";
+      document.getElementById("modal-login").style.display = type === 'login' ? 'block' : 'none';
+      document.getElementById("modal-signup").style.display = type === 'signup' ? 'block' : 'none';
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    function toggleChat() {
+      const box = document.getElementById("chat-box");
+      box.style.display = box.style.display === "block" ? "none" : "block";
+    }
+
+    // Optional: close modal on background click
+    window.onclick = function(e) {
+      if (e.target == document.getElementById("modal")) closeModal();
+    }
+
+    // Handle form submission confirmation
+    document.getElementById("contactForm")?.addEventListener("submit", function(e) {
       e.preventDefault();
+      document.getElementById("thankYou").style.display = "block";
       this.reset();
-      document.getElementById('thankYou').style.display = 'block';
     });
   </script>
 </body>
