@@ -196,14 +196,12 @@
 
     <section id="reviews">
       <h2>Customer Reviews</h2>
-      <p>"My wife, little girl, and I went in today for dog food for my 3 dogs, and the service we received was amazing. We are looking forward to our next visit, and it's nice to support our local stores in San Bernardino." <br> - Kenny O.</p>
-      <p>"I have been going there for years, and the staff is helpful, friendly, and I never have to load all the 50 lb bags in my car. The prices are good. The owner is the nicest guy. Also, they make you feel like you are at home. No other feed store can compare." <br> - Jonathan P.</p>
+      <p>"My wife, little girl, and I went in today for dog food for my 3 dogs, and the service we received was amazing. We are looking forward to our next visit, and it's nice to support our local stores!"</p>
     </section>
 
     <section id="contact">
       <h2>Contact & Location</h2>
-      <p>Visit us in store or contact us for inquiries or special requests.</p>
-      <p>Address: 3633 Inland Empire Blvd, Suite 860, Ontario, CA 91764</p>
+      <p>3633 Inland Empire Blvd, Suite 860, Ontario, CA 91764</p>
       <p>Phone: (800) 123-4567</p>
       <p>Email: admin@animalstuffstore.com</p>
       <h3>Business Hours</h3>
@@ -232,5 +230,22 @@
   </script>
   <noscript><a href="https://www.livechat.com/chat-with/16972020/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
   <!-- End of LiveChat code -->
+
+  <script>
+    function showSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('section').forEach(function(section) {
+        section.classList.remove('active');
+      });
+
+      // Show the selected section
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    function openModal(modalType) {
+      alert(modalType + " modal is now open");
+      // Open the modal based on modalType (Login or Signup)
+    }
+  </script>
 </body>
 </html>
