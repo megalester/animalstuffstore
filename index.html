@@ -137,12 +137,12 @@
     <h1>Animal Stuff Store</h1>
     <p>Your trusted source for pet supplies</p>
     <nav>
-      <a href="javascript:void(0)" onclick="showSection('home')">Home</a>
-      <a href="javascript:void(0)" onclick="showSection('about')">About Us</a>
-      <a href="javascript:void(0)" onclick="showSection('dogfood')">Dog Food</a>
-      <a href="javascript:void(0)" onclick="showSection('horsefood')">Horse Food</a>
-      <a href="javascript:void(0)" onclick="showSection('reviews')">Reviews</a>
-      <a href="javascript:void(0)" onclick="showSection('contact')">Contact & Location</a>
+      <a onclick="showSection('home')">Home</a>
+      <a onclick="showSection('about')">About Us</a>
+      <a onclick="showSection('dogfood')">Dog Food</a>
+      <a onclick="showSection('horsefood')">Horse Food</a>
+      <a onclick="showSection('reviews')">Reviews</a>
+      <a onclick="showSection('contact')">Contact & Location</a>
     </nav>
     <div class="auth-links">
       <button onclick="openModal('login')">Login</button>
@@ -160,90 +160,100 @@
     <section id="about">
       <h2>About Our Mission</h2>
       <p>We strive to serve pets and pet lovers with integrity and care, ensuring every product meets high standards of quality and safety.</p>
+      <p>At Animal Stuff Store, we supply food for animals of all sizes. We are a locally-owned-and-operated old-style feed store, and we specialize in quality customer care and informative services.</p>
+      <h3>Our customers always come first</h3>
+      <p>Real pet experts are here for you 24/7—we’re just a call, chat, email, or social media message away. We’ll help you find everything your pet will love at prices you’ll love.</p>
+      <p>Plus, we have a 100% Satisfaction Guaranteed Policy on every order. So, if your picky feline isn’t loving their new bed, you can return it or replace it. Making your pet happy has never been easier.</p>
     </section>
 
     <section id="dogfood">
       <h2>Dog Food</h2>
       <p>Explore our selection of healthy, vet-recommended food for dogs of all breeds and ages.</p>
+      <img src="https://i.imgur.com/QwD06Gc.png" alt="Dog Food Logo" class="pet-image">
+      <h3>VICTOR™ DOG FOOD</h3>
+      <p>At our pet food store, we offer brands of dog food that feature scientifically advanced, natural-based ingredients. Victor Dog Food and the other products we carry work to support a healthy skin and coat, a regular digestive system, and a strong immune system for your pooch.</p>
+      <h4>Additional Items</h4>
+      <ul>
+        <li>Pet Supplies</li>
+        <li>Cat Food</li>
+        <li>Horse Feed</li>
+        <li>Straw</li>
+        <li>Pet Toys</li>
+        <li>Rabbit Supplies</li>
+        <li>Grooming Supplies</li>
+        <li>Dog & Cat Vaccine</li>
+      </ul>
     </section>
 
     <section id="horsefood">
       <h2>Horse Food</h2>
-      <p>Premium feeds and nutritional products to keep your horses happy and healthy.</p>
+      <p>Premium feeds and nutritional products to keep your horses happy and healthy. Keep your horses healthy, happy, and nutritionally balanced with the line of horse food we carry at AllAnimalStuffStore.com. Small pet food is also available.</p>
+      <img src="https://i.imgur.com/sJKp7ug.png" alt="Horse Food Logo" class="pet-image">
+      <h3>STAR MILLING™ HORSE FOOD</h3>
+      <p>Our horse feeds provide nutritionally balanced meals for horses of all ages, exercise levels, and health conditions. You won't need to adjust or experiment with various types of feeds when you use Star Milling products. Our feeds are scientifically balanced and are sure to fit the needs of your horse.</p>
+      <p>Star Milling Company and its brands have been distinguished by the quality and safety of its animal feed products.</p>
     </section>
 
     <section id="reviews">
       <h2>Customer Reviews</h2>
-      <p>"My wife, little girl, and I went in today for dog food for my 3 dogs, and the service we received was amazing. We are looking forward to our next visit, and it's nice to support our local stores!"</p>
+      <p>"My wife, little girl, and I went in today for dog food for my 3 dogs, and the service we received was amazing. We are looking forward to our next visit, and it's nice to support our local stores in San Bernardino." <br> - Kenny O.</p>
+      <p>"I have been going there for years, and the staff is helpful, friendly, and I never have to load all the 50 lb bags in my car. The prices are good. The owner is the nicest guy. Also, they make you feel like you are at home. No pressure, just a good place to shop." <br> - Adam W.</p>
+      <p>"AllAnimalStuffStore has helped us out so much in our yard. They offer a variety of items that will fit your needs." <br> - J. T.</p>
     </section>
 
     <section id="contact">
       <h2>Contact & Location</h2>
-      <p>3633 Inland Empire Blvd, Suite 860, Ontario, CA 91764</p>
+      <h3>Store Address:</h3>
+      <p>1234 Pet Street, Animal City, PA 12345</p>
+      <h3>Get in Touch:</h3>
+      <form>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <p class="thank-you-message">Thank you for contacting us! We'll get back to you soon.</p>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Animal Stuff Store. All rights reserved.</p>
+    <p>&copy; 2025 Animal Stuff Store - All Rights Reserved.</p>
   </footer>
 
-  <!-- Modal Section -->
-  <div id="loginModal" class="modal">
+  <!-- Modal for Login/Sign Up -->
+  <div id="modal" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeModal('login')">&times;</span>
-      <h2>Login</h2>
-      <p>Please enter your login details.</p>
-      <form>
-        <input type="text" placeholder="Username" required><br>
-        <input type="password" placeholder="Password" required><br>
-        <button type="submit">Login</button>
-      </form>
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="login-form">
+        <h2>Login</h2>
+        <form>
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit">Log In</button>
+        </form>
+      </div>
+      <div id="signup-form" style="display: none;">
+        <h2>Sign Up</h2>
+        <form>
+          <input type="text" placeholder="Full Name" required>
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+      <button onclick="switchForms()">Switch to Sign Up</button>
     </div>
   </div>
 
-  <div id="signupModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('signup')">&times;</span>
-      <h2>Sign Up</h2>
-      <p>Create a new account.</p>
-      <form>
-        <input type="text" placeholder="Username" required><br>
-        <input type="email" placeholder="Email" required><br>
-        <input type="password" placeholder="Password" required><br>
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Start of LiveChat (www.livechat.com) code -->
+  <!-- LiveChat (www.livechat.com) code -->
   <script>
-    window.__lc = window.__lc || {};
-    window.__lc.license = 16972020;
-    window.__lc.integration_name = "manual_channels";
-    window.__lc.product_name = "livechat";
-    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+      window.__lc = window.__lc || {};
+      window.__lc.license = 16972020;
+      window.__lc.integration_name = "manual_channels";
+      window.__lc.product_name = "livechat";
+      ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
   </script>
   <noscript><a href="https://www.livechat.com/chat-with/16972020/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
-  <!-- End of LiveChat code -->
 
-  <script>
-    function showSection(sectionId) {
-      // Hide all sections
-      document.querySelectorAll('section').forEach(function(section) {
-        section.classList.remove('active');
-      });
-
-      // Show the selected section
-      document.getElementById(sectionId).classList.add('active');
-    }
-
-    function openModal(modalType) {
-      document.getElementById(modalType + 'Modal').style.display = 'block';
-    }
-
-    function closeModal(modalType) {
-      document.getElementById(modalType + 'Modal').style.display = 'none';
-    }
-  </script>
 </body>
 </html>
