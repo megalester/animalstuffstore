@@ -23,21 +23,6 @@
       font-weight: bold;
       cursor: pointer;
     }
-    .auth-links {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-    }
-    .auth-links button {
-      background: white;
-      color: #4caf30;
-      border: none;
-      padding: 6px 12px;
-      margin-left: 10px;
-      cursor: pointer;
-      border-radius: 4px;
-      font-weight: bold;
-    }
     main { padding: 20px; max-width: 800px; margin: auto; }
     h1, h2 { color: #4caf50; margin: 8px 0; }
     section { margin-bottom: 30px; display: none; }
@@ -85,10 +70,6 @@
       <a onclick="showSection('reviews')">Reviews</a>
       <a onclick="showSection('contact')">Contact & Location</a>
     </nav>
-    <div class="auth-links">
-      <button onclick="openModal('login')">Login</button>
-      <button onclick="openModal('signup')">Sign Up</button>
-    </div>
   </header>
 
   <main>
@@ -169,24 +150,25 @@
     window.__lc.license = 16972020;
     window.__lc.integration_name = "manual_channels";
     window.__lc.product_name = "livechat";
-    ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
+    (function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
   </script>
-  <noscript><a href="https://www.livechat.com/" target="_blank"><img src="https://cdn.livechatinc.com/widget/static/js/ee7db0e7647d506a56f3a8339518e0ba/icon.png" alt="LiveChat" /></a></noscript>
+  <noscript><a href="https://www.livechat.com/chat-with/16972020/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
   <!-- End of LiveChat code -->
-  
+
   <script>
-    function showSection(sectionId) {
-      document.querySelectorAll("section").forEach((section) => {
-        section.classList.remove("active");
+    let activeSection = 'home';
+
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.remove('active');
       });
-      document.getElementById(sectionId).classList.add("active");
+      document.getElementById(id).classList.add('active');
     }
 
-    // Contact form submission
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
       document.querySelector('.thank-you-message').style.display = 'block';
-      document.getElementById('contact-form').reset();
+      this.reset();
     });
   </script>
 </body>
