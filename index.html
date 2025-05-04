@@ -198,62 +198,103 @@
       <h2>Customer Reviews</h2>
       <p>"My wife, little girl, and I went in today for dog food for my 3 dogs, and the service we received was amazing. We are looking forward to our next visit, and it's nice to support our local stores in San Bernardino." <br> - Kenny O.</p>
       <p>"I have been going there for years, and the staff is helpful, friendly, and I never have to load all the 50 lb bags in my car. The prices are good. The owner is the nicest guy. Also, they make you feel like you are at home. No pressure, just a good place to shop." <br> - Adam W.</p>
-      <p>"AllAnimalStuffStore has helped us out so much in our yard. They offer a variety of items that will fit your needs." <br> - J. T.</p>
+      <p>"My new go-to place! Great products, great service. I recommend this store to anyone looking for pet food or supplies." <br> - Emily T.</p>
     </section>
 
     <section id="contact">
-      <h2>Contact & Location</h2>
-      <h3>Store Address:</h3>
-      <p>1234 Pet Street, Animal City, PA 12345</p>
-      <h3>Get in Touch:</h3>
-      <form>
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-      <p class="thank-you-message">Thank you for contacting us! We'll get back to you soon.</p>
+      <h2>Contact Us</h2>
+      <p>For questions or concerns, feel free to reach out to us!</p>
+      <p>Email us at: info@animalstuffstore.com</p>
+      <p>Visit us at: 1234 Pet Street, Pet City, ABC 12345</p>
+      <p>Phone: (123) 456-7890</p>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Animal Stuff Store - All Rights Reserved.</p>
+    <p>&copy; 2025 Animal Stuff Store. All Rights Reserved.</p>
   </footer>
 
-  <!-- Modal for Login/Sign Up -->
-  <div id="modal" class="modal">
+  <!-- Modal for Login/Signup -->
+  <div class="modal" id="authModal">
     <div class="modal-content">
       <span class="close" onclick="closeModal()">&times;</span>
-      <div id="login-form">
-        <h2>Login</h2>
-        <form>
-          <input type="email" placeholder="Email" required>
+      <div id="modalContent">
+        <h2 id="modalTitle">Login</h2>
+        <form id="loginForm">
+          <input type="text" placeholder="Email" required>
           <input type="password" placeholder="Password" required>
-          <button type="submit">Log In</button>
+          <button type="submit">Login</button>
         </form>
+        <p>Don't have an account? <a href="#" onclick="toggleAuthForm()">Sign Up</a></p>
       </div>
-      <div id="signup-form" style="display: none;">
-        <h2>Sign Up</h2>
-        <form>
-          <input type="text" placeholder="Full Name" required>
-          <input type="email" placeholder="Email" required>
-          <input type="password" placeholder="Password" required>
-          <button type="submit">Sign Up</button>
-        </form>
-      </div>
-      <button onclick="switchForms()">Switch to Sign Up</button>
     </div>
   </div>
 
-  <!-- LiveChat (www.livechat.com) code -->
-  <script>
-      window.__lc = window.__lc || {};
-      window.__lc.license = 16972020;
-      window.__lc.integration_name = "manual_channels";
-      window.__lc.product_name = "livechat";
-      ;(function(n,t,c){function i(n){return e._h?e._h.apply(null,n):e._q.push(n)}var e={_q:[],_h:null,_v:"2.0",on:function(){i(["on",c.call(arguments)])},once:function(){i(["once",c.call(arguments)])},off:function(){i(["off",c.call(arguments)])},get:function(){if(!e._h)throw new Error("[LiveChatWidget] You can't use getters before load.");return i(["get",c.call(arguments)])},call:function(){i(["call",c.call(arguments)])},init:function(){var n=t.createElement("script");n.async=!0,n.type="text/javascript",n.src="https://cdn.livechatinc.com/tracking.js",t.head.appendChild(n)}};!n.__lc.asyncInit&&e.init(),n.LiveChatWidget=n.LiveChatWidget||e}(window,document,[].slice))
-  </script>
-  <noscript><a href="https://www.livechat.com/chat-with/16972020/" rel="nofollow">Chat with us</a>, powered by <a href="https://www.livechat.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+  <!-- Live Chat Widget -->
+  <div id="chat-widget">
+    <button id="chat-button" onclick="toggleChatBox()">💬</button>
+    <div id="chat-box">
+      <textarea placeholder="Ask us anything..."></textarea>
+      <button>Send</button>
+    </div>
+  </div>
 
+  <script>
+    let currentSection = 'home';
+    
+    function showSection(section) {
+      document.getElementById(currentSection).classList.remove('active');
+      currentSection = section;
+      document.getElementById(currentSection).classList.add('active');
+    }
+    
+    function openModal(type) {
+      document.getElementById('authModal').style.display = 'block';
+      document.getElementById('modalContent').innerHTML = `
+        <h2>${type === 'login' ? 'Login' : 'Sign Up'}</h2>
+        <form id="${type}Form">
+          <input type="text" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit">${type === 'login' ? 'Login' : 'Sign Up'}</button>
+        </form>
+        <p>${type === 'login' ? 'Don\'t have an account?' : 'Already have an account?'} 
+          <a href="#" onclick="toggleAuthForm()">${type === 'login' ? 'Sign Up' : 'Login'}</a></p>
+      `;
+      document.getElementById('modalTitle').innerText = type === 'login' ? 'Login' : 'Sign Up';
+    }
+    
+    function closeModal() {
+      document.getElementById('authModal').style.display = 'none';
+    }
+    
+    function toggleAuthForm() {
+      const modalTitle = document.getElementById('modalTitle');
+      const form = document.getElementById('modalContent').querySelector('form');
+      const isLogin = modalTitle.innerText === 'Login';
+      
+      if (isLogin) {
+        modalTitle.innerText = 'Sign Up';
+        form.innerHTML = `
+          <input type="text" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit">Sign Up</button>
+        `;
+      } else {
+        modalTitle.innerText = 'Login';
+        form.innerHTML = `
+          <input type="text" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit">Login</button>
+        `;
+      }
+    }
+    
+    // Live Chat Toggle
+    function toggleChatBox() {
+      const chatBox = document.getElementById('chat-box');
+      chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
 </body>
 </html>
