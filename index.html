@@ -185,9 +185,10 @@
     }
 
     function openModal(type) {
-      document.getElementById('auth-modal').style.display = 'flex';
-      document.getElementById('modal-title').textContent = type === 'login' ? 'Login' : 'Sign Up';
-    }
+  const modal = document.getElementById('auth-modal');
+  modal.style.display = 'flex'; // make sure it's flex, not block
+  document.getElementById('modal-title').textContent = type === 'login' ? 'Login' : 'Sign Up';
+}
 
     function closeModal() {
       document.getElementById('auth-modal').style.display = 'none';
